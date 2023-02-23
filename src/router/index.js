@@ -9,14 +9,14 @@ VueRouter.prototype.push = function push(location) {
 Vue.use(VueRouter);
 
 const recursion = function(paths, root, requireContext) {
-  const dirs = paths.map((item) => item.split("/")[0]);
+  const dirs = paths.map(item => item.split("/")[0]);
   const sets = Array.from(new Set(dirs));
-  const router = sets.map((it) => {
+  const router = sets.map(it => {
     const reg = new RegExp("^" + it + "/");
     const _paths = paths
-      .filter((item) => item !== it)
-      .filter((item) => reg.test(item))
-      .map((item) => item.substring(it.length + 1));
+      .filter(item => item !== it)
+      .filter(item => reg.test(item))
+      .map(item => item.substring(it.length + 1));
     const component = requireContext(root + it + "/index.vue").default;
     const children = recursion(_paths, root + it + "/", requireContext);
     const routerItem = {
@@ -25,7 +25,7 @@ const recursion = function(paths, root, requireContext) {
       component,
       name: component.name || it,
       meta: component.meta || {},
-      redirect: component.meta?.redirect,
+      redirect: component.meta?.redirect
     };
     if (!routerItem.children.length) delete routerItem.children;
     if (!routerItem.redirect === undefined) delete routerItem.redirect;
@@ -38,23 +38,23 @@ const genRouter = function(requireContext) {
   // 不读取components文件夹下的文件
   const paths = requireContext
     .keys()
-    .map((item) => item.slice(2, -10))
-    .filter((item) => !/components/.test(item));
+    .map(item => item.slice(2, -10))
+    .filter(item => !/components/.test(item));
   const filterRoutes = [];
   const router = recursion(paths, "./", requireContext)
-    .map((item) => ({
+    .map(item => ({
       ...item,
-      path: "/" + item.path,
+      path: "/" + item.path
     }))
-    .filter((v) => !filterRoutes.includes(v.path));
+    .filter(v => !filterRoutes.includes(v.path));
   return router;
 };
 
 const routes = [
   {
     path: "",
-    redirect: "/login/index",
-  },
+    redirect: "/login/index"
+  }
 ];
 
 const requireContext = require.context(
@@ -67,12 +67,12 @@ const asyncRoutes = genRouter(requireContext);
 
 const router = new VueRouter({
   routes: routes,
-  base: process.env.BASE_URL,
+  base: process.env.BASE_URL
 });
-asyncRoutes.forEach((v) => {
-  router.addRoute(v);
-});
-// router.addRoutes(asyncRoutes); //已弃用
+// asyncRoutes.forEach((v) => {
+//   router.addRoute(v);
+// });
+router.addRoutes(asyncRoutes); //已弃用
 
 export default router;
 export { asyncRoutes };

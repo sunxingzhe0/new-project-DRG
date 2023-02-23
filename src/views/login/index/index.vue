@@ -89,7 +89,7 @@ export default {
       passwordType: "password",
       loginForm: {
         account: "",
-        password: "",
+        password: ""
       },
       loginRules: {
         account: [{ required: true, trigger: "blur", message: "请输入账号" }],
@@ -97,10 +97,10 @@ export default {
           {
             required: true,
             trigger: "blur",
-            message: "密码不能为空",
-          },
-        ],
-      },
+            message: "密码不能为空"
+          }
+        ]
+      }
     };
   },
   methods: {
@@ -124,7 +124,7 @@ export default {
       this.loginForm.password = "";
     },
     handleLogin() {
-      this.$refs.loginForm.validate((valid) => {
+      this.$refs.loginForm.validate(valid => {
         if (valid) {
           // await this.$store.dispatch("app/handelLogin");
           this.$router.push("/baseConfig/dataSource");
@@ -144,8 +144,8 @@ export default {
       this.$nextTick(() => {
         this.$refs.password.focus();
       });
-    },
-  },
+    }
+  }
 };
 </script>
 

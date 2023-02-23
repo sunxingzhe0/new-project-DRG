@@ -61,13 +61,13 @@
             @size-change="
               $emit('change', {
                 ...value,
-                [pageProps.size]: $event,
+                [pageProps.size]: $event
               })
             "
             @current-change="
               $emit('change', {
                 ...value,
-                [pageProps.current]: $event,
+                [pageProps.current]: $event
               })
             "
           >
@@ -86,37 +86,37 @@ export default {
   name: "FooterTool",
   model: {
     prop: "value",
-    event: "change",
+    event: "change"
   },
   props: {
     value: {
-      required: true,
+      required: true
     },
     tableRef: {},
     hasExport: {
-      type: Boolean,
+      type: Boolean
     },
     bats: {
       type: Array,
-      default: () => [],
+      default: () => []
     },
     total: {
-      type: [Number, String],
+      type: [Number, String]
     },
     pageProps: {
       type: Object,
       default: () => ({
         current: "currentNum",
-        size: "size",
-      }),
+        size: "size"
+      })
     },
     done: Boolean,
-    isList: Boolean,
+    isList: Boolean
   },
   data() {
     return {
       current: this.value[this.pageProps.current],
-      size: this.value[this.pageProps.size],
+      size: this.value[this.pageProps.size]
     };
   },
   watch: {
@@ -124,8 +124,8 @@ export default {
       handler: function(value) {
         this.current = value[this.pageProps.current];
       },
-      deep: true,
-    },
+      deep: true
+    }
   },
   computed: {
     showLeft() {
@@ -140,7 +140,7 @@ export default {
     },
     indeterminate() {
       return !this.checked && this.tableRef.selection?.length > 0;
-    },
+    }
   },
   methods: {
     handleToggleSelection(checked) {
@@ -153,19 +153,19 @@ export default {
     },
     handleCommand(command) {
       const id = request.interceptors.response.use(
-        (response) => {
+        response => {
           this.handleToggleSelection(false);
           request.interceptors.response.eject(id);
           return response;
         },
-        (error) => {
+        error => {
           request.interceptors.response.eject(id);
           return Promise.reject(error);
         }
       );
       this.$emit("command", command);
-    },
-  },
+    }
+  }
 };
 </script>
 

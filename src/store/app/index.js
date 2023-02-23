@@ -4,7 +4,7 @@ export default {
   namespaced: true,
   state: {
     token: "",
-    userInfo: window.sessionStorage.getItem("userInfo"),
+    userInfo: window.sessionStorage.getItem("userInfo")
   },
   actions: {
     handelLogin({ commit }, { userName, password }) {
@@ -13,7 +13,7 @@ export default {
         try {
           const res = await apiLogin({
             username,
-            password,
+            password
           });
           commit("SET_TOKEN", res.token);
           setToken(res.token);
@@ -42,7 +42,7 @@ export default {
         //   reject(error);
         // }
       });
-    },
+    }
   },
   mutations: {
     SET_TOKEN: (state, palod) => {
@@ -50,6 +50,6 @@ export default {
     },
     SET_USERINFO: (state, palod) => {
       state.userInfo = palod;
-    },
-  },
+    }
+  }
 };

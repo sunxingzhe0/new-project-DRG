@@ -20,7 +20,7 @@ import { SideBar, AppHeader, BreadCrumb } from "@/components/App";
 export default {
   meta: {
     title: "菜单1-2",
-    activeMenu: "/home",
+    activeMenu: "/home"
   },
   name: "layout-ih",
   components: {
@@ -28,12 +28,12 @@ export default {
     AppHeader,
     RouteView,
     InnerView,
-    BreadCrumb,
+    BreadCrumb
   },
   data() {
     return {
       transition: "",
-      lastRouteIndex: 0,
+      lastRouteIndex: 0
     };
   },
   watch: {
@@ -45,8 +45,8 @@ export default {
         this.transition = "left-slide-in";
       }
       this.lastRouteIndex = index;
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss">

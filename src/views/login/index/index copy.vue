@@ -12,8 +12,8 @@ export default {
     confirmLogin() {
       // await this.$store.dispatch("app/handelLogin");
       this.$router.push("/baseConfig/dataSource");
-    },
-  },
+    }
+  }
 };
 </script>
 

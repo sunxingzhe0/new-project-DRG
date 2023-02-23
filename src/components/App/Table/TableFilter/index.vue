@@ -63,6 +63,7 @@
           <el-button
             type="primary"
             size="small"
+            plain
             @click="resolveEmitChange(), (isOpen = false)"
             >搜索</el-button
           >
@@ -100,8 +101,8 @@
                     sm: hasDatePicker ? 12 : 24,
                     lg: {
                       span: hasDatePicker ? 10 : 16,
-                      offset: hasPopover ? 2 : 2,
-                    },
+                      offset: hasPopover ? 2 : 2
+                    }
                   }
             "
             v-if="data.search"
@@ -207,12 +208,12 @@
                     xs: 24,
                     sm: 6,
                     lg: 6,
-                    xl: 7,
+                    xl: 7
                   }
                 : {
                     xs: 24,
                     sm: 12,
-                    lg: hasPopover ? { span: 12 } : 12,
+                    lg: hasPopover ? { span: 12 } : 12
                   }
             "
           >
@@ -268,16 +269,18 @@
           </el-col>
         </el-row>
       </el-col>
-      <el-col :span="3" class="infoitem" v-if="alwaysShowBtn">
-        <el-button size="small" @click="clearFilterData('inline')"
+      <el-col :span="4" class="infoitem" v-if="alwaysShowBtn">
+        <!-- <el-button size="small" @click="clearFilterData('inline')"
           >重置</el-button
-        >
-        <el-button
+        > -->
+        <span class="right-btn">重置</span>
+        <span class="right-btn">搜索</span>
+        <!-- <el-button
           type="primary"
           size="small"
           @click="resolveEmitChange(), (isOpen = false)"
           >搜索</el-button
-        >
+        > -->
       </el-col>
     </el-row>
     <!-- </el-col> -->
@@ -292,28 +295,28 @@ export default {
   name: "TableFilter",
   components: {
     /* eslint-disable-next-line vue/no-unused-components */
-    InputRange,
+    InputRange
   },
   model: {
     prop: "value",
-    event: "change",
+    event: "change"
   },
   props: {
     value: {
       type: Object,
-      required: true,
+      required: true
     },
     data: {
       type: Object,
-      required: true,
+      required: true
     },
     popoverWidth: {
-      type: [String, Number],
+      type: [String, Number]
     },
     alwaysShowBtn: {
       type: Boolean,
-      default: true,
-    },
+      default: true
+    }
   },
   data() {
     this.pickerOptions = {
@@ -326,7 +329,7 @@ export default {
             start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
             end.setTime(end.getTime() - 1000);
             picker.$emit("pick", [start, end]);
-          },
+          }
         },
         {
           text: "最近三个月",
@@ -336,7 +339,7 @@ export default {
             start.setTime(start.getTime() - 3600 * 1000 * 24 * 91);
             end.setTime(end.getTime() - 1000);
             picker.$emit("pick", [start, end]);
-          },
+          }
         },
         {
           text: "最近半年",
@@ -346,22 +349,22 @@ export default {
             start.setTime(start.getTime() - 3600 * 1000 * 24 * 182);
             end.setTime(end.getTime() - 1000);
             picker.$emit("pick", [start, end]);
-          },
-        },
-      ],
+          }
+        }
+      ]
     };
 
     this.keys = {
       date: {
         start: this.data.date?.keys[1] || "startTime",
-        end: this.data.date?.keys[2] || "endTime",
-      },
+        end: this.data.date?.keys[2] || "endTime"
+      }
     };
     this.time = {
       date: {
         start: this.data.time?.keys[0] || "beginTime",
-        end: this.data.time?.keys[1] || "overTime",
-      },
+        end: this.data.time?.keys[1] || "overTime"
+      }
     };
     this.inlinekeys = this.getinlineKeys();
     // {
@@ -372,13 +375,13 @@ export default {
     // }
     return {
       values: {},
-      isOpen: false,
+      isOpen: false
     };
   },
   computed: {
     calcWords() {
       return Math.max(
-        ...Object.values(this.data).map((_) =>
+        ...Object.values(this.data).map(_ =>
           isArray(_)
             ? Math.max(..._.map(({ props }) => props.label?.length ?? 0))
             : 0
@@ -390,7 +393,7 @@ export default {
     },
     hasDatePicker() {
       return !!this.data.date;
-    },
+    }
   },
   watch: {
     value: {
@@ -399,8 +402,8 @@ export default {
         this.setDefault(this.cacheValue, false);
       },
       immediate: true,
-      deep: true,
-    },
+      deep: true
+    }
   },
   created() {
     this.hiddenPopover = () => {
@@ -415,22 +418,22 @@ export default {
   methods: {
     getinlineKeys() {
       let dateItem = this.data.inline.find(
-        (item) => item.props.is == "el-date-picker"
+        item => item.props.is == "el-date-picker"
       );
       console.log(dateItem?.keys);
       if (dateItem) {
         return {
           date: {
             start: dateItem.keys[0] || "beginTime",
-            end: dateItem.keys[1] || "overTime",
-          },
+            end: dateItem.keys[1] || "overTime"
+          }
         };
       } else {
         return {
           date: {
             start: "beginDate",
-            end: "endDate",
-          },
+            end: "endDate"
+          }
         };
       }
     },
@@ -440,7 +443,7 @@ export default {
       this.need2Split = {
         [this.keys.date.start]: this.keys.date.end,
         [this.time.date.start]: this.time.date.end,
-        [this.inlinekeys.date.start]: this.inlinekeys.date.end,
+        [this.inlinekeys.date.start]: this.inlinekeys.date.end
       };
       // console.log(this.need2Split)
       const handleValue = ({ props, keys }) => {
@@ -497,13 +500,13 @@ export default {
           !isClear && this.value[this.inlinekeys.date.start]
             ? [
                 this.value[this.inlinekeys.date.start],
-                this.value[this.inlinekeys.date.end],
+                this.value[this.inlinekeys.date.end]
               ]
             : null,
         [this.inlinekeys.date.end]:
           !isClear && this.value[this.inlinekeys.date.start]
             ? this.value[this.inlinekeys.date.end]
-            : null,
+            : null
       };
       // console.log(this.values)
       //拼接项回显
@@ -558,7 +561,7 @@ export default {
         .flat()
         .reduce((r, value) => r.concat([[value, ""]]), []);
       Object.assign(this.values, Object.fromEntries(data), {
-        current: 1,
+        current: 1
       });
       //这段是用来拆分startTime类似的数组的
       Object.entries(this.values).forEach(([key, value]) => {
@@ -572,8 +575,8 @@ export default {
         this.values.readType = 0;
       }
       this.$emit("change", this.values);
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -597,6 +600,7 @@ $select-width: 100px;
       width: calc(#{$select-width} + 1px);
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
+
       border-right-color: transparent;
     }
 
@@ -604,6 +608,7 @@ $select-width: 100px;
       width: calc(100% - #{$select-width});
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
+      color: #fff !important;
     }
   }
 
@@ -693,9 +698,40 @@ $select-width: 100px;
   }
 }
 .el-input__inner {
-  background: none;
+  background: none !important;
 }
-/* .el-select-dropdown {
-  background: rgba($color: #000000, $alpha: 0.2);
-} */
+.el-select-dropdown {
+  background: rgba($color: #000000, $alpha: 0.5) !important;
+}
+.el-select-dropdown__item {
+  color: #fff !important;
+}
+.el-select-dropdown__item:hover {
+  background: #095383 !important;
+  color: #fff;
+}
+.selected {
+  background: #095383 !important;
+  color: #fff;
+}
+.right-btn {
+  width: 80px;
+  text-align: center;
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 12px;
+  background-color: rgba(20, 62, 96);
+  border: 1px solid #2287c7;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #479fcc;
+  margin-left: 10px;
+}
+.right-btn:hover {
+  background-color: #2287c5;
+  color: #fff;
+}
+.el-input__inner {
+  color: #fff;
+}
 </style>
