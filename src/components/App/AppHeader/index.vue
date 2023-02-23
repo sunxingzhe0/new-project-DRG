@@ -8,8 +8,8 @@
         {{ companyName }}
       </div>
       <div class="app-time">
-        <span>{{ now.date }}</span>
-        <span>{{ now.time }}</span>
+        <span>{{ now.date }}</span> {{ " " }} <span>{{ now.time }}</span
+        >{{ " " }}
         <span>{{ now.week }}</span>
       </div>
     </div>
@@ -20,7 +20,7 @@
       <div class="app-user">
         <div class="user-name">
           <!-- {{ `${userInfo.name || "用户名"}（${userInfo.username || "账号"}）` }} -->
-          主管医师：张伟（管斥病人数：8）
+          主管医师：张伟（管床病人数：9）
         </div>
       </div>
       <el-popconfirm title="确认退出登录？" @confirm="loginOut">
@@ -42,11 +42,11 @@ export default {
       now: {
         date: "",
         time: "",
-        week: ""
+        week: "",
       },
       appName,
       companyName,
-      timmer: null
+      timmer: null,
     };
   },
   computed: {
@@ -54,7 +54,7 @@ export default {
       return this.$store.state.app.userInfo
         ? JSON.parse(this.$store.state.app.userInfo)
         : {};
-    }
+    },
   },
   created() {
     this.timmer = setInterval(() => this.updateTime(), 1000);
@@ -68,14 +68,14 @@ export default {
       this.now = {
         date: now.format("YYYY-MM-DD"),
         time: now.format("HH:mm:ss"),
-        week: now.format("dddd")
+        week: now.format("dddd"),
       };
     },
     async loginOut(e) {
       await this.$store.dispatch("app/loginOut");
       this.$router.push("/login/index");
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

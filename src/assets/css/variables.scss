@@ -173,3 +173,51 @@ $sideBarWidth: 130px;
   purpleLighter: $--color-purple-lighter;
   bottomOffset: $app-router-view-margin + $app-router-view-padding;
 }
+
+//elementui覆盖
+.el-dialog {
+  background-color: rgba(0, 33, 72, 0.8) !important;
+  .el-dialog__header {
+    .el-dialog__title {
+      color: #fff;
+    }
+  }
+
+  //表格
+  .el-table {
+    background-color: none;
+    color: #fff;
+    .el-table__cell {
+      border: none;
+      background-color: none;
+    }
+  }
+  .el-table tr {
+    background-color: none;
+  }
+  .el-table,
+  .el-table__expanded-cell {
+    background-color: transparent;
+  }
+
+  .el-table th,
+  .el-table tr {
+    background-color: transparent;
+  }
+
+  .el-table::before {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0px;
+  }
+  .el-table th.el-table__cell.is-leaf {
+    background: none;
+  }
+  .el-table--enable-row-hover .el-table__body tr:hover > td {
+    background: rgb(0, 19, 42) !important;
+  }
+  .el-table thead {
+    color: #9bd4ff;
+  }
+}
