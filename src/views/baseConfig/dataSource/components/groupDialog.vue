@@ -83,11 +83,11 @@
           </el-select>
         </template>
       </el-table-column>
-      <el-table-column
+      <!-- <el-table-column
         label="状态"
         property="status"
         width="60"
-      ></el-table-column>
+      ></el-table-column> -->
 
       <el-table-column label="操作">
         <template slot-scope="{ row, $index }">
@@ -132,66 +132,57 @@ export default {
       //疾病编码
       diseaseData: [
         {
-          index: "1",
-          status: "CC",
-          code: "I84.201",
-          codeName: "高血压1级",
+          status: "",
+          code: "N20.100",
+          codeName: "输尿管结石",
         },
         {
-          index: "2",
           status: "CC",
-          code: "I84.201",
-          codeName: "高血压1级",
+          code: "E11.900",
+          codeName: "2型糖尿病",
         },
         {
-          index: "3",
-          status: "CC",
-          code: "I84.201",
-          codeName: "高血压1级",
+          status: "",
+          code: "N13.201",
+          codeName: "肾积水伴肾结石",
         },
         {
-          index: "4",
-          status: "CC",
-          code: "I84.201",
-          codeName: "高血压1级",
+          status: "",
+          code: "Z46.600x002",
+          codeName: "取出输尿管支架管",
+        },
+        {
+          status: "",
+          code: "I10.x00x031",
+          codeName: "高血压病3级（高危）",
         },
       ],
       //手术
       operation: [
         {
-          index: "1",
-          status: "CC",
-          code: "I84.201",
-          codeName: "高血压1级",
+          code: "56.0x00x005",
+          codeName: "经尿道输尿管镜输尿管激光碎石术",
         },
         {
-          index: "2",
-          status: "CC",
-          code: "I84.201",
-          codeName: "高血压1级",
+          code: "59.8x03",
+          codeName: "经尿道输尿管支架置入术",
         },
         {
-          index: "3",
-          status: "CC",
-          code: "I84.201",
-          codeName: "高血压1级",
-        },
-        {
-          index: "4",
-          status: "CC",
-          code: "I84.201",
-          codeName: "高血压1级",
+          code: "56.3100",
+          codeName: "输尿管镜检查",
         },
       ],
       diagnoseOptions: [
-        { label: "高血压1级", value: "I84.201" },
-        { label: "高血压2级", value: "I84.202" },
-        { label: "高血压3级", value: "I84.203" },
+        { label: "输尿管结石", value: "N20.100" },
+        { label: "2型糖尿病", value: "E11.900" },
+        { label: "肾积水伴肾结石", value: "N13.201" },
+        { label: "取出输尿管支架管", value: "Z46.600x002" },
+        { label: "高血压病3级（高危）", value: "I10.x00x031" },
       ],
       operationOptions: [
-        { label: "高血压1级", value: "I84.201" },
-        { label: "高血压2级", value: "I84.202" },
-        { label: "高血压3级", value: "I84.203" },
+        { label: "经尿道输尿管镜输尿管激光碎石术", value: "56.0x00x005" },
+        { label: "经尿道输尿管支架置入术", value: "59.8x03" },
+        { label: "输尿管镜检查", value: "56.3100" },
       ],
     };
   },
