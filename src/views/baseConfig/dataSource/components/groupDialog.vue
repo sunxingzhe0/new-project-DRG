@@ -37,6 +37,11 @@
           </el-select>
         </template>
       </el-table-column>
+      <el-table-column
+        label="状态"
+        property="status"
+        width="60"
+      ></el-table-column>
       <el-table-column label="操作">
         <template slot-scope="{ row, $index }">
           <i
@@ -78,6 +83,12 @@
           </el-select>
         </template>
       </el-table-column>
+      <el-table-column
+        label="状态"
+        property="status"
+        width="60"
+      ></el-table-column>
+
       <el-table-column label="操作">
         <template slot-scope="{ row, $index }">
           <i
@@ -122,21 +133,25 @@ export default {
       diseaseData: [
         {
           index: "1",
+          status: "CC",
           code: "I84.201",
           codeName: "高血压1级",
         },
         {
           index: "2",
+          status: "CC",
           code: "I84.201",
           codeName: "高血压1级",
         },
         {
           index: "3",
+          status: "CC",
           code: "I84.201",
           codeName: "高血压1级",
         },
         {
           index: "4",
+          status: "CC",
           code: "I84.201",
           codeName: "高血压1级",
         },
@@ -145,21 +160,25 @@ export default {
       operation: [
         {
           index: "1",
+          status: "CC",
           code: "I84.201",
           codeName: "高血压1级",
         },
         {
           index: "2",
+          status: "CC",
           code: "I84.201",
           codeName: "高血压1级",
         },
         {
           index: "3",
+          status: "CC",
           code: "I84.201",
           codeName: "高血压1级",
         },
         {
           index: "4",
+          status: "CC",
           code: "I84.201",
           codeName: "高血压1级",
         },
