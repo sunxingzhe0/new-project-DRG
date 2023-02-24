@@ -731,7 +731,9 @@ $select-width: 100px;
   background-color: #2287c5;
   color: #fff;
 }
-.el-input__inner {
-  color: #fff !important;
+.filter-box {
+  .el-input__inner {
+    color: #fff !important;
+  }
 }
 </style>

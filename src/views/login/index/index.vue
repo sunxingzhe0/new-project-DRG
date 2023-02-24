@@ -12,7 +12,7 @@
           label-position="left"
         >
           <div class="title-container">
-            <h3 class="title">{{ "DRGs管理系统" }}</h3>
+            <h3 class="title">{{ "DRG管理系统" }}</h3>
           </div>
 
           <el-form-item prop="account">
@@ -89,7 +89,7 @@ export default {
       passwordType: "password",
       loginForm: {
         account: "",
-        password: ""
+        password: "",
       },
       loginRules: {
         account: [{ required: true, trigger: "blur", message: "请输入账号" }],
@@ -97,10 +97,10 @@ export default {
           {
             required: true,
             trigger: "blur",
-            message: "密码不能为空"
-          }
-        ]
-      }
+            message: "密码不能为空",
+          },
+        ],
+      },
     };
   },
   methods: {
@@ -124,7 +124,7 @@ export default {
       this.loginForm.password = "";
     },
     handleLogin() {
-      this.$refs.loginForm.validate(valid => {
+      this.$refs.loginForm.validate((valid) => {
         if (valid) {
           // await this.$store.dispatch("app/handelLogin");
           this.$router.push("/baseConfig/dataSource");
@@ -144,12 +144,12 @@ export default {
       this.$nextTick(() => {
         this.$refs.password.focus();
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@/assets/css/variables.scss";
 
 $dark_gray: #889aa4;
@@ -181,10 +181,9 @@ $dark_gray: #889aa4;
   }
 
   .login-aside {
-    /* background: url("~@/assets/img/common/login-form-aside.png") no-repeat 50% /
-      cover; */
+    background: url("~@/assets/img/login-pg.png") no-repeat 50% / cover;
     background-color: #315c7c;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     width: 500px;
     height: 440px;
   }
