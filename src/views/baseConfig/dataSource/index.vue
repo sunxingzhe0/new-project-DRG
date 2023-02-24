@@ -51,7 +51,9 @@
             <span>
               <span class="index-num">{{ item.index }}</span>
               床
+              <span class="title-group">入组：{{ item.groupCode }}</span>
             </span>
+
             <span>
               <i v-if="item.isSelf" class="el-icon-place"></i>
               <span v-if="item.isNew" class="is-new">新</span>
@@ -230,6 +232,7 @@ export default {
         {
           index: "01",
           name: "张峰",
+          groupCode: "FV29",
           age: 59,
           isSelf: true,
           isNew: true,
@@ -248,6 +251,8 @@ export default {
         {
           index: "02",
           name: "张峰",
+          groupCode: "BR23",
+
           age: 59,
           sex: 1,
 
@@ -264,6 +269,7 @@ export default {
         },
         {
           index: "03",
+          groupCode: "ES21",
           name: "张峰",
           age: 59,
           sex: 1,
@@ -280,6 +286,7 @@ export default {
         },
         {
           index: "04",
+          groupCode: "ET25",
           name: "张峰",
           age: 59,
           sex: 1,
@@ -296,6 +303,7 @@ export default {
         },
         {
           index: "05",
+          groupCode: "FU11",
           name: "张峰",
           age: 59,
           sex: 1,
@@ -313,6 +321,7 @@ export default {
         },
         {
           index: "06",
+          groupCode: "BR25",
           name: "张峰",
           age: 59,
           sex: 1,
@@ -330,6 +339,7 @@ export default {
         },
         {
           index: "07",
+          groupCode: "ZZ13",
           name: "张峰",
           age: 59,
           sex: 1,
@@ -346,6 +356,7 @@ export default {
         },
         {
           index: "08",
+          groupCode: "IH19",
           name: "张峰",
           age: 59,
           sex: 1,
@@ -363,6 +374,7 @@ export default {
         },
         {
           index: "09",
+          groupCode: "CA60",
           name: "张峰",
           age: 59,
           sex: 1,
@@ -619,6 +631,10 @@ export default {
   line-height: 21px;
   color: #fff;
   font-size: 12px;
+}
+.title-group {
+  color: #68ebff;
+  margin-left: 10px;
 }
 .el-icon-place {
   margin-right: 10px;
